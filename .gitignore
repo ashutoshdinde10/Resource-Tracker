@@ -1,47 +1,33 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# Backend
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
+# IDEs
+.idea/
 .vscode/
+*.iml
+*.swp
+*.swo
 
-### Maven ###
-.mvn/
-mvnw
-mvnw.cmd
-
-### Database ###
-*.db
-*.log
-
-### OS ###
+# OS
 .DS_Store
 Thumbs.db
 
+# Logs
+*.log
+
+# Build
+*.class
+*.jar
+!backend/.mvn/wrapper/maven-wrapper.jar
+
+# Environment
+.env
+.env.local

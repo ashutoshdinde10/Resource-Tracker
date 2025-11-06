@@ -1,335 +1,256 @@
-# Project Allocation Tracker
+# 📊 Project Allocation Tracker
 
-A comprehensive user-project allocation management system built with Spring Boot and HTML/CSS/JavaScript.
+A full-stack application for tracking user allocations across multiple projects with SOW (Statement of Work) and team management.
 
-## Features
-
-- **User Management**: Create, read, update, and delete users with details like name, email, department, and role
-- **Project Management**: Manage projects with information including name, description, project manager, dates, and status
-- **Allocation Tracking**: Track user allocations to projects with:
-  - Allocation percentage (0-100%)
-  - Working status (currently working or not)
-  - Start and end dates
-  - Remarks
-- **Dashboard**: View quick statistics and active allocations overview
-- **Modern UI**: Clean, responsive interface with gradient design
-
-## Technology Stack
-
-### Backend
-- **Spring Boot 3.1.5** - Application framework
-- **Spring Data JPA** - Database operations
-- **H2 Database** - In-memory database (development)
-- **Lombok** - Reduce boilerplate code
-- **Java 17** - Programming language
-
-### Frontend
-- **HTML5** - Structure
-- **CSS3** - Styling with modern gradients and animations
-- **JavaScript (Vanilla)** - Interactivity and API calls
-
-## Prerequisites
-
-- Java 17 or higher
-- Maven 3.6 or higher
-- No database installation needed (uses H2 in-memory database with dummy data)
-
-## Project Structure
+## 🏗️ Project Structure
 
 ```
-project-allocation-tracker/
-├── src/
-│   ├── main/
-│   │   ├── java/com/allocation/tracker/
-│   │   │   ├── ProjectAllocationTrackerApplication.java
-│   │   │   ├── controller/
-│   │   │   │   ├── UserController.java
-│   │   │   │   ├── ProjectController.java
-│   │   │   │   └── AllocationController.java
-│   │   │   ├── entity/
-│   │   │   │   ├── User.java
-│   │   │   │   ├── Project.java
-│   │   │   │   └── UserProjectAllocation.java
-│   │   │   ├── repository/
-│   │   │   │   ├── UserRepository.java
-│   │   │   │   ├── ProjectRepository.java
-│   │   │   │   └── AllocationRepository.java
-│   │   │   └── service/
-│   │   │       ├── UserService.java
-│   │   │       ├── ProjectService.java
-│   │   │       └── AllocationService.java
-│   │   └── resources/
-│   │       ├── application.properties
-│   │       └── static/
-│   │           ├── index.html
-│   │           ├── css/
-│   │           │   └── styles.css
-│   │           └── js/
-│   │               └── app.js
-└── pom.xml
+POC/
+├── backend/              # Spring Boot Backend
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/    # Java source files
+│   │   │   └── resources/
+│   │   │       ├── application.properties
+│   │   │       ├── data.sql  # Sample data
+│   │   │       └── static/   # React build output
+│   └── pom.xml
+│
+└── frontend/            # React Frontend
+    ├── src/
+    │   ├── components/  # React components
+    │   ├── services/    # API services
+    │   ├── App.jsx
+    │   └── main.jsx
+    ├── package.json
+    └── vite.config.js
 ```
 
-## Installation & Running
+## 🚀 Quick Start
 
-### Step 1: Navigate to Project Directory
+### Prerequisites
+- **Java 17+** and Maven
+- **Node.js 16+** and npm (for React frontend)
+- **PostgreSQL 12+** (database server)
+
+### Database Setup
+
+**First time only - Setup PostgreSQL:**
+
+1. Install PostgreSQL from https://www.postgresql.org/download/
+2. Run the setup script:
 ```bash
-cd C:\Users\ashutosh.dinde_codit\Desktop\POC
+psql -U postgres -f backend/setup-postgres.sql
 ```
 
-### Step 2: Build the Project
+Or see detailed instructions: **[POSTGRES_SETUP.md](POSTGRES_SETUP.md)**
+
+---
+
+### Running the Application
+
+#### Option 1: Development Mode (Recommended)
+
+**Terminal 1 - Start Backend:**
 ```bash
-mvn clean install
+cd backend
+mvn spring-boot:run
+```
+Backend runs on: http://localhost:8080
+
+**Terminal 2 - Start Frontend:**
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Frontend runs on: http://localhost:3000
+
+**Open Browser:** http://localhost:3000
+
+---
+
+#### Option 2: Production Build
+
+**Build React App:**
+```bash
+cd frontend
+npm install
+npm run build
 ```
 
-### Step 3: Run the Application
+**Start Backend (serves React app):**
 ```bash
+cd backend
 mvn spring-boot:run
 ```
 
-The application will start on **http://localhost:8080**
+**Open Browser:** http://localhost:8080
 
-The application will automatically:
-- Create H2 in-memory database
-- Create required tables
-- Load comprehensive dummy data (20 users, 12 projects, 40+ allocations)
+---
 
-### Step 4: Access the Application
-Open your web browser and navigate to:
+## ✨ Features
+
+### 📈 Dashboard
+- Real-time statistics
+- Total users, projects, and allocations count
+
+### 👥 Users Management
+- Create, edit, delete users
+- **Click on any user** → View complete allocation history
+- Track name, email, department, role
+
+### 📁 Projects Management
+- Full CRUD operations
+- **Click on any project** → View all team members
+- Project status: Active, Completed, On Hold, Extended
+
+### 📋 Allocations Management
+- Assign users to projects with percentage
+- Track SOW (Statement of Work) numbers
+- Manage team names
+- Set working status and dates
+
+### 📜 History & Audit Trail
+- **NEW!** Complete change tracking
+- View all modifications to users and allocations
+- See dates, SOW numbers, allocation changes
+- Filter by change type (User/Allocation)
+- Detailed before/after values
+- Automatic logging of all CRUD operations
+
+### 🎯 Interactive Features
+✅ Click users → See allocation history  
+✅ Click projects → See team members  
+✅ All details include SOW and Team info  
+✅ **History tab → See all changes**  
+✅ Real-time updates  
+✅ Beautiful responsive UI
+
+---
+
+## 🛠️ Tech Stack
+
+### Backend
+- Spring Boot 3.x
+- Spring Data JPA
+- **PostgreSQL Database**
+- Java 17
+- Maven
+
+### Frontend
+- React 18
+- Vite (build tool)
+- Axios (API calls)
+- Modern CSS3
+
+---
+
+## 📊 Database
+
+The application starts with **empty tables**. You can add your own data through the UI.
+
+---
+
+## 🔧 Configuration
+
+### Backend Port
+Default: `8080`  
+Change in: `backend/src/main/resources/application.properties`
+```properties
+server.port=8080
 ```
-http://localhost:8080
+
+### Frontend Dev Port
+Default: `3000`  
+Change in: `frontend/vite.config.js`
+```javascript
+server: { port: 3000 }
 ```
 
-### Step 5: Access H2 Database Console (Optional)
-For debugging and viewing the database:
-```
-http://localhost:8080/h2-console
-```
-**Connection Details:**
-- JDBC URL: `jdbc:h2:mem:allocationdb`
-- Username: `sa`
-- Password: (leave empty)
+### Database
+Using **PostgreSQL**
+- Database: `allocation_tracker_db`
+- Username: `allocation_user`
+- Password: `allocation_pass`
+- Port: `5432`
 
-## API Endpoints
+**GUI Tool:** pgAdmin (included with PostgreSQL installer)
 
-### User Endpoints
-- `GET /api/users` - Get all users
-- `GET /api/users/{id}` - Get user by ID
-- `POST /api/users` - Create new user
+---
+
+## 🐛 Troubleshooting
+
+### "npm not recognized"
+Install Node.js from: https://nodejs.org/
+
+### Port already in use
+Change ports in configuration files or kill processes:
+```powershell
+# Windows
+Get-Process -Id (Get-NetTCPConnection -LocalPort 8080).OwningProcess | Stop-Process
+```
+
+### Backend connection issues
+1. Ensure backend runs on port 8080
+2. Check `frontend/vite.config.js` proxy settings
+3. Restart both servers
+
+---
+
+## 📝 API Endpoints
+
+### Users
+- `GET /api/users` - List all users
+- `POST /api/users` - Create user
 - `PUT /api/users/{id}` - Update user
 - `DELETE /api/users/{id}` - Delete user
 
-### Project Endpoints
-- `GET /api/projects` - Get all projects
-- `GET /api/projects/{id}` - Get project by ID
-- `GET /api/projects/status/{status}` - Get projects by status
-- `POST /api/projects` - Create new project
+### Projects
+- `GET /api/projects` - List all projects
+- `POST /api/projects` - Create project
 - `PUT /api/projects/{id}` - Update project
 - `DELETE /api/projects/{id}` - Delete project
 
-### Allocation Endpoints
-- `GET /api/allocations` - Get all allocations
-- `GET /api/allocations/{id}` - Get allocation by ID
-- `GET /api/allocations/user/{userId}` - Get allocations for a user
-- `GET /api/allocations/project/{projectId}` - Get allocations for a project
-- `GET /api/allocations/active` - Get all active allocations
-- `POST /api/allocations` - Create new allocation
+### Allocations
+- `GET /api/allocations` - List all allocations
+- `POST /api/allocations` - Create allocation
 - `PUT /api/allocations/{id}` - Update allocation
 - `DELETE /api/allocations/{id}` - Delete allocation
-
-## Usage Guide
-
-### 1. Creating Users
-1. Navigate to the **Users** tab
-2. Click **Add User** button
-3. Fill in the user details:
-   - Name (required)
-   - Email (required)
-   - Department (optional)
-   - Role (optional)
-4. Click **Save**
-
-### 2. Creating Projects
-1. Navigate to the **Projects** tab
-2. Click **Add Project** button
-3. Fill in the project details:
-   - Project Name (required)
-   - Description (optional)
-   - Project Manager (optional)
-   - Start Date (optional)
-   - End Date (optional)
-   - Status (required): Active, Completed, or On Hold
-4. Click **Save**
-
-### 3. Creating Allocations
-1. Navigate to the **Allocations** tab
-2. Click **Add Allocation** button
-3. Fill in the allocation details:
-   - Select User (required)
-   - Select Project (required)
-   - Allocation Percentage (required, 0-100%)
-   - Working Status (required): Currently Working or Not Working
-   - Start Date (optional)
-   - End Date (optional)
-   - Remarks (optional)
-4. Click **Save**
-
-### 4. Dashboard Overview
-- View total counts of users, projects, and active allocations
-- See a table of all currently active allocations
-
-## Database Schema
-
-### Users Table
-- `id` - Primary Key
-- `name` - User's full name
-- `email` - Unique email address
-- `department` - Department name
-- `role` - User's role/designation
-
-### Projects Table
-- `id` - Primary Key
-- `name` - Project name
-- `description` - Project description
-- `project_manager` - Manager's name
-- `start_date` - Project start date
-- `end_date` - Project end date
-- `status` - ACTIVE, COMPLETED, or ON_HOLD
-
-### User_Project_Allocations Table
-- `id` - Primary Key
-- `user_id` - Foreign Key to Users
-- `project_id` - Foreign Key to Projects
-- `allocation_percentage` - Percentage (0-100)
-- `is_working` - Boolean (true/false)
-- `allocation_start_date` - Allocation start date
-- `allocation_end_date` - Allocation end date
-- `remarks` - Additional notes
-
-## Features Highlights
+- `GET /api/allocations/user/{userId}` - User history
+- `GET /api/allocations/project/{projectId}` - Project team
 
 ### Dashboard
-- Quick statistics at a glance
-- Active allocations overview
-- Real-time data updates
+- `GET /api/dashboard/stats` - Dashboard statistics
 
-### User Management
-- Complete CRUD operations
-- Email validation
-- Department and role tracking
+### History
+- `GET /api/history` - Get all change history (audit trail)
 
-### Project Management
-- Status tracking (Active, Completed, On Hold)
-- Date range management
-- Project manager assignment
+---
 
-### Allocation Tracking
-- Percentage-based allocation
-- Working status indicator
-- Date range tracking
-- Remarks for additional context
+## 🚦 Development Tips
 
-## UI Features
+1. **Hot Reload**: Frontend updates instantly during development
+2. **Console Logs**: Check browser console and terminal for errors
+3. **H2 Console**: View database at http://localhost:8080/h2-console
+4. **Sample Data**: Auto-loaded on startup from `data.sql`
 
-- **Responsive Design**: Works on desktop and mobile devices
-- **Modern Gradient Theme**: Beautiful purple gradient design
-- **Smooth Animations**: Fade-in effects and hover animations
-- **Color-coded Status**: Easy visual identification of statuses
-- **Intuitive Navigation**: Tab-based navigation system
-- **Form Validation**: Client and server-side validation
+---
 
-## Database Configuration
+## 📄 License
 
-The application uses **H2 in-memory database** by default with dummy data.
+This is a POC (Proof of Concept) project for allocation tracking.
 
-### Current Configuration (H2)
-```properties
-spring.datasource.url=jdbc:h2:mem:allocationdb
-spring.datasource.username=sa
-spring.datasource.password=
-spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
-```
+---
 
-**Benefits:**
-- ✅ No database installation required
-- ✅ Dummy data pre-loaded automatically
-- ✅ Perfect for development and testing
-- ✅ Fresh data on every restart
+## 🤝 Contributing
 
-### Switching to PostgreSQL (if needed)
+1. Create feature branch
+2. Make changes
+3. Test locally
+4. Submit pull request
 
-1. Uncomment PostgreSQL dependency in `pom.xml`:
-```xml
-<dependency>
-    <groupId>org.postgresql</groupId>
-    <artifactId>postgresql</artifactId>
-    <scope>runtime</scope>
-</dependency>
-```
+---
 
-2. Uncomment PostgreSQL configuration in `application.properties`:
-```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/primo_skeleton_dev
-spring.datasource.username=primo_dev
-spring.datasource.password=dev_password
-spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
-```
-
-3. Create PostgreSQL database and user with proper permissions
-
-### Switching to MySQL (if needed)
-
-1. Add MySQL dependency to `pom.xml`:
-```xml
-<dependency>
-    <groupId>com.mysql</groupId>
-    <artifactId>mysql-connector-j</artifactId>
-    <scope>runtime</scope>
-</dependency>
-```
-
-2. Update `application.properties`:
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/allocationdb
-spring.datasource.username=root
-spring.datasource.password=yourpassword
-spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
-```
-
-### Customizing the UI Theme
-
-Edit `src/main/resources/static/css/styles.css` to change colors:
-- Look for gradient definitions: `linear-gradient(135deg, #667eea 0%, #764ba2 100%)`
-- Replace with your preferred colors
-
-## Troubleshooting
-
-### Port 8080 Already in Use
-Change the port in `application.properties`:
-```properties
-server.port=8081
-```
-
-### CORS Issues
-CORS is already enabled with `@CrossOrigin(origins = "*")` in controllers. For production, specify allowed origins.
-
-### Data Not Persisting Between Restarts
-This is expected behavior with H2 in-memory database. Data is reset on every restart. If you need data persistence, switch to PostgreSQL or MySQL (see Database Configuration section).
-
-## Future Enhancements
-
-- User authentication and authorization
-- Email notifications for allocation changes
-- Export allocations to Excel/PDF
-- Calendar view of allocations
-- Reporting and analytics dashboard
-- Allocation conflict detection
-- Multi-tenancy support
-
-## License
-
-This project is open source and available for educational purposes.
-
-## Support
-
-For issues or questions, please refer to the documentation or contact the development team.
+**Happy Tracking! 🎉**
 

@@ -1,0 +1,98 @@
+====================================
+ PROJECT ALLOCATION TRACKER
+ QUICK START GUIDE
+====================================
+
+📁 CLEAN PROJECT STRUCTURE:
+----------------------------
+POC/
+├── backend/     ← Spring Boot
+│   ├── src/
+│   ├── pom.xml
+│   └── README.md
+│
+├── frontend/    ← React + Vite
+│   ├── src/
+│   ├── package.json
+│   └── README.md
+│
+├── README.md    ← Main docs
+└── RUN.bat      ← Easy start!
+
+
+🔧 FIRST TIME SETUP:
+--------------------
+1. Install PostgreSQL
+2. Setup database:
+   psql -U postgres -f backend/setup-postgres.sql
+
+See: POSTGRES_SETUP.md for details
+
+
+🚀 EASIEST WAY TO RUN:
+-----------------------
+Double-click: RUN.bat
+
+OR manually:
+
+Terminal 1 (Backend):
+  cd backend
+  mvn spring-boot:run
+
+Terminal 2 (Frontend):
+  cd frontend
+  npm install
+  npm run dev
+
+Open: http://localhost:3000
+
+
+✨ WHAT WORKS:
+--------------
+✅ Dashboard - See statistics
+✅ Users - CRUD operations
+   👉 Click any user = See their history
+✅ Projects - CRUD operations
+   👉 Click any project = See team members
+✅ Allocations - Full management
+   - SOW numbers
+   - Team names
+   - Working status
+✅ **History Tab** - NEW! 📜
+   - Track all changes
+   - See dates, SOW, allocations
+   - Filter by type
+   - Audit trail
+
+
+📊 DATABASE:
+---------------
+Starts empty - add your own data!
+Use the UI to create:
+- Users
+- Projects
+- Allocations
+- History tracks automatically
+
+
+🔧 REQUIRED SOFTWARE:
+---------------------
+1. PostgreSQL
+   Download: https://www.postgresql.org/download/
+
+2. Node.js
+   Download: https://nodejs.org/
+   (Required for React frontend)
+
+3. Java 17+ and Maven
+   (Should already be installed)
+
+
+⚡ PRO TIP:
+-----------
+Use RUN.bat for automatic setup!
+
+
+Need help? Check README.md
+====================================
+
