@@ -52,16 +52,16 @@ function ProjectAllocationTracker() {
         </div>
 
         <main className="p-6 w-full bg-white rounded-xl shadow-sm">
-          <TabsContent value="users">
+          <TabsContent value="users" className="outline-none">
             <Users />
           </TabsContent>
-          <TabsContent value="projects">
+          <TabsContent value="projects" className="outline-none">
             <Projects />
           </TabsContent>
-          <TabsContent value="allocations">
+          <TabsContent value="allocations" className="outline-none">
             <Allocations />
           </TabsContent>
-          <TabsContent value="history">
+          <TabsContent value="history" className="outline-none">
             <History />
           </TabsContent>
         </main>
